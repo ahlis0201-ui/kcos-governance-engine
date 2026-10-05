@@ -1,3 +1,33 @@
+> ## 🏭 KCOS FACTORY GOVERNANCE — 工厂治理条例
+>
+> **本仓库属于 KCOS 工业化生产线。**
+>
+> 本仓库的工程、文档、资产、评审与发布工作，必须遵守 KCOS 工厂治理标准。  
+> This repository is part of the KCOS Industrial Production Pipeline and is governed by the KCOS Factory Governance Standards.
+>
+> **Mandatory Governance Baselines**
+> - **KCOS-DOCUMENT-LIFECYCLE-001 V1.0 — FROZEN** — 文档生命周期治理唯一真值
+> - **KCOS-5S-001** — 工程与运营 5S 基线
+> - **EPS-001** — Engineering Production System / 职责与生产治理
+>
+> **Engineering Lifecycle**
+> `Spec → Review → Impl → Freeze → Iterate`
+>
+> **Governance Infrastructure**
+> `SSOT → Gate → Evidence → Remote Proof`
+>
+> **Factory Rules**
+> 1. SSOT 是唯一真值；不得以局部实现、聊天记录或个人判断替代 SSOT。
+> 2. Frozen Baseline 禁止原地修改；变更必须建立新版本并经过规定的 Review → Gate → Freeze 流程。
+> 3. 治理结论必须有 Evidence；无证据不形成结论。
+> 4. 禁止伪修复、降规格修复、绕过评审、绕过 Gate。
+> 5. 工程生命周期与文档生命周期是正交模型，不得混用。
+> 6. 仓库本地规则不得与 KCOS 工厂治理标准冲突。
+>
+> **Entry Rule:** 开始施工前，先识别本仓库适用的 SSOT、Contract、Gate 与 Evidence 要求。
+>
+> — KCOS Factory Governance · **FROZEN BASELINE**
+
 # KCOS Governance Engine
 
 Central governance SSOT for the KCOS ecosystem.
