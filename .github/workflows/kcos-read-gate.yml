@@ -18,7 +18,7 @@ jobs:
           fetch-depth: 0
       - name: Fetch pinned gate checker
         run: |
-          curl -fsSL "https://raw.githubusercontent.com/ahlis0201-ui/kcos-governance-engine/3d8db073b2f05aeca681cca4fbf00f27fb8597fd/tools/kcos-read-gate/check-read-gate.mjs" -o /tmp/kcos-read-gate.mjs
+          curl -fsSL "https://raw.githubusercontent.com/ahlis0201-ui/kcos-governance-engine/3f1731296a5c7a66bad282dc867388235c764571/tools/kcos-read-gate/check-read-gate.mjs" -o /tmp/kcos-read-gate.mjs
       - name: Execute gate
         env:
           KCOS_REPO: ${{ github.repository }}
