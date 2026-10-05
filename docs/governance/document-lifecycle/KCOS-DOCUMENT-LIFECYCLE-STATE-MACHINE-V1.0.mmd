@@ -1,0 +1,14 @@
+stateDiagram-v2
+    [*] --> DRAFT: Document Birth
+    DRAFT --> COLLABORATING: Share / Start Collaboration
+    COLLABORATING --> UNDER_REVIEW: Submit for Review
+    UNDER_REVIEW --> COLLABORATING: Reject / Revision Required
+    UNDER_REVIEW --> APPROVED: Review Passed
+    APPROVED --> FREEZE: Baseline Lock
+    FREEZE --> PUBLISHED: Publish & Open Asset
+    PUBLISHED --> ITERATING: Change Request Approved
+    ITERATING --> COLLABORATING: Unlock for Iteration
+    PUBLISHED --> ARCHIVED: Lifecycle Final Closed
+    PUBLISHED --> DELETED: Asset Retire (Pending Destruction)
+    ARCHIVED --> [*]: Permanent Read-Only
+    DELETED --> [*]: Permanent Destruction (Audit Evidence Retained)
