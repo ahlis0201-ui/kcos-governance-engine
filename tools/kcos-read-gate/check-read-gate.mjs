@@ -14,10 +14,11 @@ const required=[['Gate ID','KCOS-READ-GATE-001'],['SSOT ID','KCOS-DOCUMENT-LIFEC
 for(const [k,v] of required)if(!receipt.includes(k+': '+v))fail('receipt field mismatch: '+k);
 if(!/^Executor:\s+\S.+$/m.test(receipt))fail('receipt Executor is empty');
 if(!/^Evidence:\s+Git commit containing this receipt$/m.test(receipt))fail('receipt Evidence field missing');
-const rawUrl='https://raw.githubusercontent.com/'+ssotRepo+'/'+ssotSha+'/'+ssotPath;
-const response=await fetch(rawUrl);if(!response.ok)fail('cannot retrieve frozen SSOT ('+response.status+')');
-const ssot=Buffer.from(await response.arrayBuffer());fs.writeFileSync('/tmp/kcos-ssot.md',ssot);
-const actualBlobSha=git('hash-object','/tmp/kcos-ssot.md');if(actualBlobSha!==ssotSha)fail('SSOT blob SHA mismatch: expected '+ssotSha+', got '+actualBlobSha);
+const apiUrl='https://api.github.com/repos/'+ssotRepo+'/commits/'+ssotSha;
+const commitResponse=await fetch(apiUrl,{headers:{'Accept':'application/vnd.github+json'}});if(!commitResponse.ok)fail('cannot retrieve frozen SSOT commit ('+commitResponse.status+')');
+const commitData=await commitResponse.json();const fileEntry=(commitData.files||[]).find(f=>f.filename===ssotPath);if(!fileEntry)fail('pinned SSOT commit does not contain '+ssotPath);
+const rawUrl='https://raw.githubusercontent.com/'+ssotRepo+'/'+ssotSha+'/'+ssotPath;const response=await fetch(rawUrl);if(!response.ok)fail('cannot retrieve frozen SSOT ('+response.status+')');
+const ssot=Buffer.from(await response.arrayBuffer());fs.writeFileSync('/tmp/kcos-ssot.md',ssot);const actualBlobSha=git('hash-object','/tmp/kcos-ssot.md');if(actualBlobSha!==fileEntry.sha)fail('SSOT blob SHA mismatch: expected '+fileEntry.sha+', got '+actualBlobSha);
 const receiptCommit=git('log','-1','--format=%H','--',receiptPath);if(!receiptCommit)fail('receipt has no Git history');
 const head=git('rev-parse','HEAD');try{execFileSync('git',['merge-base','--is-ancestor',receiptCommit,head])}catch{fail('receipt commit is not an ancestor of HEAD')}
 const receiptTime=Number(git('show','-s','--format=%ct',receiptCommit));const headTime=Number(git('show','-s','--format=%ct',head));
