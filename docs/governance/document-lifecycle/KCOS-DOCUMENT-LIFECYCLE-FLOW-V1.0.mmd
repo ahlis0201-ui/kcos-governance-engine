@@ -1,0 +1,19 @@
+flowchart LR
+    A["SPEC<br/>规格定义"] --> B["CREATE<br/>文档创建"]
+    B --> C["COLLABORATE<br/>团队协作"]
+    C --> D["REVIEW<br/>多维度评审"]
+    D -->|Reject 驳回| C
+    D -->|Pass 通过| E["APPROVE<br/>定稿核准"]
+    E --> F["FREEZE<br/>基线冻结"]
+    F --> G["PUBLISH<br/>正式发布"]
+    G --> H["KNOWLEDGE<br/>知识沉淀"]
+    H --> I["ITERATE<br/>合规迭代"]
+    I --> C
+    H --> J["ARCHIVE<br/>资产归档"]
+    J --> K["HISTORICAL<br/>历史只读闭环"]
+    D -. Review Evidence .-> L["EVIDENCE BASE<br/>全量证据链仓库"]
+    E -. Approval Evidence .-> L
+    F -. Baseline Evidence .-> L
+    G -. Publication Evidence .-> L
+    J -. Archive Evidence .-> L
+    I -. Iteration Evidence .-> L
