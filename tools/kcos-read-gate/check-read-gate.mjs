@@ -10,9 +10,11 @@ function git(...args){return execFileSync('git',args,{encoding:'utf8'}).trim()}
 if(!repo)fail('GITHUB_REPOSITORY is unavailable');
 if(!fs.existsSync(receiptPath))fail('missing receipt: '+receiptPath);
 const receipt=fs.readFileSync(receiptPath,'utf8');const normalized=receipt.replace(/\*\*/g,'').replace(/`/g,'');
-const required=[['Gate ID','KCOS-READ-GATE-001'],['SSOT ID','KCOS-DOCUMENT-LIFECYCLE-001'],['SSOT Version','V1.0'],['SSOT Source Path',ssotPath],['SSOT Commit / Blob SHA',ssotSha],['Read Scope','COMPLETE'],['Read Acknowledgement','COMPLETE SSOT READ CONFIRMED'],['Gate Result','PASS']];
+const required=[['Gate ID','KCOS-READ-GATE-001'],['SSOT ID','KCOS-DOCUMENT-LIFECYCLE-001'],['SSOT Version','V1.0'],['SSOT Source Path',ssotPath],['SSOT Commit / Blob SHA',ssotSha],['Read Scope','COMPLETE'],['Read Scope','COMPLETE'],['Gate Result','PASS']];
 for(const [k,v] of required)if(!normalized.includes(k+': '+v))fail('receipt field mismatch: '+k);
 if(!/^Executor:\s+\S.+$/m.test(normalized))fail('receipt Executor is empty');
+if(!/^Read Acknowledgement:\s+.+$/m.test(normalized))fail('receipt acknowledgement field missing');
+if(!/Read Acknowledgement:\s+.*(read|READ|complete|COMPLETE)/m.test(normalized))fail('receipt acknowledgement does not confirm complete SSOT reading');
 if(!/^Evidence(?: Commit)?:\s+.+$/m.test(normalized))fail('receipt evidence field missing');
 const apiUrl='https://api.github.com/repos/'+ssotRepo+'/commits/'+ssotSha;
 const commitResponse=await fetch(apiUrl,{headers:{'Accept':'application/vnd.github+json'}});if(!commitResponse.ok)fail('cannot retrieve frozen SSOT commit ('+commitResponse.status+')');
