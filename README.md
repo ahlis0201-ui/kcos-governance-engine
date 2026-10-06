@@ -59,3 +59,18 @@ Operating model:
 Normal execution SHALL use the frozen SSOT, standard values, upper/lower tolerances, acceptance criteria, and evidence requirements. Ambiguity discovered during execution is treated as a standard-gap or exception and MUST NOT be resolved by ad-hoc reinterpretation.
 
 This principle complements `KCOS-5S-001`, QA/QC/QE, Evidence, Gate, Runtime, and construction governance.
+
+
+---
+
+## KCOS Artifact Classification Gate — Mandatory
+
+本仓库的仓库存在不等于成品存在。施工前必须先完成 Artifact Classification。
+
+适用分类：T01 Finished Product、T02 Backend Product、T03 Program Feature、T04 Test System、T05 Reference Implementation、T06 Development Tool、T07 Infrastructure、T08 Developer Artifact、T09 Data/Knowledge Asset、T10 Governance Artifact、T11 Prototype/PoC/Demo、T12 Legacy/Archive。
+
+**硬规则：** Backend PASS ≠ Product PASS；Feature PASS ≠ Product PASS；Test PASS ≠ Product PASS；Reference PASS ≠ Production PASS。
+
+**施工前门禁：** 阅读 ARTIFACT-CLASSIFICATION-001，声明本仓库/本次施工对象的 Artifact Type、Parent Product、Quality Gate 与 Release Artifact；未完成分类不得进入成品质量验收。
+
+SSOT: docs/governance/ARTIFACT-CLASSIFICATION-001.md
