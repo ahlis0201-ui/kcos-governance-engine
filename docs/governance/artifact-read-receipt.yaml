@@ -1,0 +1,10 @@
+schema: KCOS-ARTIFACT-READ-RECEIPT-001
+version: "1.0"
+repository: ahlis0201-ui/kcos-governance-engine
+artifact_ids: [KCOS-GOV-ENGINE-T07-001,KCOS-GOV-ENGINE-T10-001]
+ssot_version: "ARTIFACT-CLASSIFICATION-001"
+reader: {role: "", identity: ""}
+read_at: ""
+acknowledgement: ""
+evidence_reference: ""
+status: PENDING
