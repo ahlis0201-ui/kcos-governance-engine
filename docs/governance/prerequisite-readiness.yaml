@@ -1,0 +1,11 @@
+schema: KCOS-PREREQUISITE-READINESS-001
+version: "1.0"
+repository: ahlis0201-ui/kcos-governance-engine
+overall: BLOCKED
+inventory_complete: false
+readiness_evidence_complete: false
+runtime: {entry: "", health_check: ""}
+dependencies: []
+security_boundary_declared: false
+observability_declared: false
+evidence_refs: []
