@@ -1,0 +1,25 @@
+schema: KCOS-ARTIFACT-DECLARATION-001
+version: "1.0"
+repository: ahlis0201-ui/kcos-governance-engine
+artifacts:
+  - id: KCOS-GOV-ENGINE-T07-001
+    type: T07
+    name: KCOS
+    primary_product: KCOS
+    primary_domain: B02
+    maturity: UNKNOWN
+    production_status: candidate
+    scope_boundary: {in: [], out: []}
+    applicable_quality_gate: ARTIFACT-QUALITY-GATE-MATRIX-001
+  - id: KCOS-GOV-ENGINE-T10-001
+    type: T10
+    name: KCOS supporting artifact
+    primary_product: KCOS
+    primary_domain: B02
+    maturity: UNKNOWN
+    production_status: non_production
+    scope_boundary: {in: [], out: []}
+    applicable_quality_gate: ARTIFACT-QUALITY-GATE-MATRIX-001
+read_receipt_ref: docs/governance/artifact-read-receipt.yaml
+prerequisite_ref: docs/governance/prerequisite-readiness.yaml
+release_artifact: {ref: "", commit_sha: ""}
