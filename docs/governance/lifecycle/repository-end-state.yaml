@@ -1,0 +1,20 @@
+schema: KCOS-REPOSITORY-END-STATE-001
+version: "1.0"
+required_states:
+  - DEVELOPMENT
+  - DEVELOPMENT_COMPLETE
+  - OPERATIONS_READY
+  - MAINTENANCE
+  - RETIREMENT_READY
+  - RETIRED
+hard_rules:
+  - DEVELOPMENT_COMPLETE_requires_gate_evidence
+  - OPERATIONS_READY_requires_owner
+  - unknown_state_is_abnormal
+  - operations_does_not_reopen_development
+  - retirement_requires_dependency_disposition
+asset_class: GOVERNANCE_ENGINE
+identity: "KCOS 治理 SSOT 与治理引擎"
+development_endpoint: DEVELOPMENT_COMPLETE
+operations_endpoint: OPERATIONS_READY
+retirement_endpoint: RETIRED
