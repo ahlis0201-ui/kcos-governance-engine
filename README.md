@@ -1,4 +1,17 @@
 > ## 🏭 KCOS FACTORY GOVERNANCE — 工厂治理条例
+
+
+## 🏭 Repository Lifecycle Endpoint
+
+**Development endpoint:** `DEVELOPMENT_COMPLETE` — declared release scope, Gate/evidence, reproducible artifact and frozen baseline complete.
+
+**Operations endpoint:** `OPERATIONS_READY` — released baseline is owned, observable, recoverable and operationally stable.
+
+**Maintenance boundary:** new features require a new controlled development scope; operations does not silently reopen development.
+
+**Retirement endpoint:** `RETIRED` — dependencies, traffic/jobs, data, credentials and final evidence dispositioned.
+
+SSOT: `docs/governance/lifecycle/REPOSITORY-END-STATE-001.md`
 >
 > **本仓库属于 KCOS 工业化生产线。**
 >
