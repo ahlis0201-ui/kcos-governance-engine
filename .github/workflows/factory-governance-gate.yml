@@ -1,0 +1,27 @@
+name: Factory Governance Gate
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  factory-governance:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Verify factory entry baseline
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f AGENTS.md
+          grep -q 'LOCAL-WORKER-BASELINE-001' AGENTS.md
+          test -f README.md
+          grep -qi 'KCOS FACTORY GOVERNANCE' README.md
+          grep -qi 'lifecycle' README.md
+          echo "FACTORY_GOVERNANCE_GATE=PASS"
+          echo "REMOTE_COMMIT_SHA=$(git rev-parse HEAD)"
